@@ -6,13 +6,18 @@ import json
 # main executable/entry function
 def main():
     print("do stuff")
-    with open("./data/stuff.json") as filedata:
-        print(filedata)
+    
+    with open("./data/stuff.json","r+") as filedata:
+        print(filedata) #practicing print from CLI
         objectdata=json.load(filedata)
         print(objectdata)
         print(type(objectdata))
         objectdata["jim"]="morton"
+        objectdata["john"]="eliot"
         print(objectdata)
+    
+    with open("./data/stuff.json","w") as filedata:
+        json.dump(objectdata,filedata)         
 
 if __name__=="__main__":
     main()
