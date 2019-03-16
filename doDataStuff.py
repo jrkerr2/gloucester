@@ -10,6 +10,9 @@ def main():
         print(filedata)
         objectdata=json.load(filedata)
         print(objectdata)
+        print(type(objectdata))
+        objectdata["jim"]="morton"
+        print(objectdata)
 
 if __name__=="__main__":
     main()
