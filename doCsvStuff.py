@@ -1,23 +1,17 @@
-# read data in from json file; print list of locations to terminal
+# read in csv file, print out stuff
 
-#import json python package
-import json
+import csv
 
-# main executable/entry function
-def main():
-    print("do stuff")
-    
-    with open("./data/stuff.json","r+") as filedata:
-        print(filedata) #practicing print from CLI
-        objectdata=json.load(filedata)
-        print(objectdata)
-        print(type(objectdata))
-        objectdata["jim"]="morton"
-        objectdata["john"]="eliot"
-        print(objectdata)
-    
-    with open("./data/stuff.json","w") as filedata:
-        json.dump(objectdata,filedata)         
+with open('./data/nana.csv') as csv_file:
+    csv_reader = csv.reader(csv_file, delimiter=',')
+    line_count = 0
 
-if __name__=="__main__":
-    main()
+    for row in csv_reader:
+        if line_count == 0:
+            print(f'CSV column names are {", ".join(row)}')
+            line_count += 1
+        else:
+            print(f"\t{row[0]}'s middle name is {row[1]} and {row[0]}'s last name is {row[2]}.")
+            line_count += 1
+            
+    print(f'Processed {line_count} lines.')
